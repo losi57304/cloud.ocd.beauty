@@ -6,16 +6,6 @@ x-logging: &default-logging
       max-size: 10m
 
 services:
-  adguardhome:
-    <<: *default-logging
-    container_name: adguardhome
-    image: adguard/adguardhome
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - /srv/adguardhome/conf:/opt/adguardhome/conf
-      - /srv/adguardhome/work:/opt/adguardhome/work
-
   beszel-agent:
     <<: *default-logging
     container_name: beszel-agent
