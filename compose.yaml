@@ -11,8 +11,7 @@ services:
     container_name: adguardhome
     image: adguard/adguardhome
     restart: unless-stopped
-    ports:
-      - 3005:3000
+    network_mode: host
     volumes:
       - /srv/adguardhome/conf:/opt/adguardhome/conf
       - /srv/adguardhome/work:/opt/adguardhome/work
