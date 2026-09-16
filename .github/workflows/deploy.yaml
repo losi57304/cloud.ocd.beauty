@@ -13,6 +13,6 @@ jobs:
           username: ${{secrets.USERNAME}}
           password: ${{secrets.PASSWORD}}
           script: |
-            cd /srv/ocd.beauty
+            cd /srv/cloud.ocd.beauty
 
             just deploy
