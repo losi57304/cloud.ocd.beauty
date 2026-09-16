@@ -1,0 +1,23 @@
+x-logging: &default-logging
+  logging:
+    driver: local
+    options:
+      max-file: 3
+      max-size: 10m
+
+services:
+  beszel-agent:
+    <<: *default-logging
+    container_name: beszel-agent
+    image: henrygd/beszel-agent:0.19.0
+    restart: unless-stopped
+    environment:
+      - HUB_URL=https://beszel.ocd.beauty
+      - KEY=${BESZEL_KEY}
+      - TOKEN=${BESZEL_TOKEN}
+    ports:
+      - 45876:45876
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: ["CMD", "/agent", "health"]
